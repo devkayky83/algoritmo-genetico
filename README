@@ -1,0 +1,23 @@
+#  Algoritmo Genético de Minimização
+
+Um código que explora o uso de algoritmos genéticos para resolver problemas de otimização por meio da minimização de funções matemáticas.
+
+## Métodologia
+
+1. Criar população inicial (aleatória)
+2. Para cada geração:
+    a. Calcular f(x) para cada indivíduo
+    b. Selecionar melhores (pais)
+    c. Cruzar pais → gerar filhos
+    d. Aplicar mutação nos filhos
+    e. Formar nova população
+3. Exibir melhor solução final
+
+## Como executar
+
+### C++ - PowerShell
+```bash
+g++ class.cpp -o class ./class.exe
+
+
+

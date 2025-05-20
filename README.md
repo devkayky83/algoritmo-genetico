@@ -1,6 +1,6 @@
 # Algoritmo Genético de Minimização
 
-Este projeto implementa um algoritmo genético em C++ para resolver problemas de **otimização**, com foco na **minimização de funções matemáticas**.
+Este código implementa um algoritmo genético em C++ para resolver problemas de **otimização**, com foco na **minimização de funções matemáticas**.
 
 ---
 

@@ -4,6 +4,12 @@ Este código implementa um algoritmo genético em C++ para resolver problemas de
 
 ---
 
+# Função a Ser Minimizada
+
+$$
+f(x_1, x_2) = 0{,}25x_1^4 - 3x_1^3 + 11x_1^2 - 13x_1 + 0{,}25x_2^4 - 3x_2^3 + 11x_2^2 - 13x_2
+$$
+
 ## Metodologia
 
 O algoritmo segue os seguintes passos:

@@ -78,9 +78,7 @@ public:
     {
         for (int i = 0; i < tamanho; i++)
         {
-            double chance = (rand() % 100) / 100.0;
-
-            if (chance < taxa)
+            if ((rand() % 100) < (taxa * 100.0))
             {
                 cromossomo[i] = 1 - cromossomo[i];
             }
@@ -111,10 +109,42 @@ int main()
         return 1;
     }
 
-    Individuo ind(tamanho);
-    ind.gerarIndividuo();
-    ind.calcularFx();
-    ind.mostrarResultado();
+    double taxaMutacao = 0.05;
+    int maxGeracoes = 1000;
+    int semMelhoraLimite = 100;
+    int semMelhora = 0;
+
+    Individuo melhor(tamanho);
+    melhor.gerarIndividuo();
+    double melhorFx = melhor.calcularFx();
+
+    for (int geracao = 1; geracao <= maxGeracoes; geracao++) 
+    {
+        Individuo mutado = melhor;
+        mutado.mutacao(taxaMutacao);
+        double fxMutado = mutado.calcularFx();
+        
+        if (fxMutado < melhorFx) 
+        {
+            melhor = mutado;
+            melhorFx = fxMutado;
+            semMelhora = 0;
+            
+            cout << "Geração" << geracao << ": Nova melhor solução encontrada - f(x1,x2): " << melhorFx << "\n";
+        } else 
+        {
+            semMelhora++;
+        }
+
+        if (semMelhora >= semMelhoraLimite) 
+        {
+            cout << "Nenhuma melhora nas ultimas" << semMelhoraLimite << " gerações. Parando...\n";
+            break;
+        }
+    }
+
+    cout << "\nMelhor solução encontrada:\n";
+    melhor.mostrarResultado();
 
     return 0;
 }

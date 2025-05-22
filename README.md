@@ -20,7 +20,7 @@ O algoritmo segue os seguintes passos:
    - b. Selecionar os **melhores (pais)**
    - c. Realizar o **cruzamento** para gerar filhos
    - d. Aplicar **mutação** nos filhos
-   - e. Formar a **nova população**
+   - **Coming Soon:** e. Formar a **nova população**
 3. Exibir a **melhor solução final**
 
 ---

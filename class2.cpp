@@ -103,43 +103,45 @@ int main()
     cout << "Digite o tamanho do vetor: ";
     cin >> tamanho;
 
-    if (tamanho % 2 != 0)
-    {
-        cout << "O tamanho deve ser par para dividir em x1 e x2.\n";
-        return 1;
-    }
+    // if (tamanho % 2 != 0)
+    // {
+    //     cout << "O tamanho deve ser par para dividir em x1 e x2.\n";
+    //     return 1;
+    // }
 
     double taxaMutacao = 0.05;
+    int populacaoTamanho = 10;
     int maxGeracoes = 1000;
-    int semMelhoraLimite = 100;
-    int semMelhora = 0;
 
-    Individuo melhor(tamanho);
-    melhor.gerarIndividuo();
+    vector<Individuo> populacao;
+    for (int i = 0; i < populacaoTamanho; i++) 
+    {
+        Individuo ind(tamanho);
+        ind.gerarIndividuo();
+        cout << "Indivíduo " << i + 1 << " gerado:\n";
+        ind.mostrarResultado();
+        cout << "------------------------\n";
+        populacao.push_back(ind);
+    }
+
+    Individuo melhor = populacao[0];
     double melhorFx = melhor.calcularFx();
 
     for (int geracao = 1; geracao <= maxGeracoes; geracao++) 
     {
-        Individuo mutado = melhor;
-        mutado.mutacao(taxaMutacao);
-        double fxMutado = mutado.calcularFx();
-        
-        if (fxMutado < melhorFx) 
+        for (int i = 0; i < populacaoTamanho; i++) 
         {
-            melhor = mutado;
-            melhorFx = fxMutado;
-            semMelhora = 0;
-            
-            cout << "Geração" << geracao << ": Nova melhor solução encontrada - f(x1,x2): " << melhorFx << "\n";
-        } else 
-        {
-            semMelhora++;
-        }
+            Individuo mutado = populacao[i];
+            mutado.mutacao(taxaMutacao);
+            double fxMutado = mutado.calcularFx();
 
-        if (semMelhora >= semMelhoraLimite) 
-        {
-            cout << "Nenhuma melhora nas ultimas" << semMelhoraLimite << " gerações. Parando...\n";
-            break;
+            if (fxMutado < melhorFx) 
+            {
+                melhor = mutado;
+                melhorFx = fxMutado;
+                cout << "Geração" << geracao << ": Nova melhor solução encontrada - f(x1,x2): " << melhorFx << "\n";
+            }
+            populacao[i] = mutado;
         }
     }
 

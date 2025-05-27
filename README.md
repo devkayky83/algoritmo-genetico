@@ -20,7 +20,8 @@ O algoritmo segue os seguintes passos:
    - b. Selecionar os **melhores (pais)**
    - c. Realizar o **cruzamento** para gerar filhos
    - d. Aplicar **mutação** nos filhos
-   - **Coming Soon:** e. Formar a **nova população**
+   - e. Formar a **nova população** com 10 indivíduos
+   - f. **Recombinação** com 2 indivíduos qualquer
 3. Exibir a **melhor solução final**
 
 ---
@@ -32,3 +33,5 @@ O algoritmo segue os seguintes passos:
 ```bash
 g++ class.cpp -o class
 ./class.exe
+
+
